@@ -4,8 +4,12 @@ const mongoose = require('mongoose');
 const colors = require('colors');
 const flash = require('connect-flash');
 const session = require('express-session');
+const passport = require('passport');
 
 const app = express();
+
+// Passport config
+require('./config/passport')(passport);
 
 // DB Config
 const db = require('./config/keys').MongoURI;
@@ -32,6 +36,10 @@ app.use(
 		cookie: { secure: true }
 	})
 );
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Connect Flash
 app.use(flash());
