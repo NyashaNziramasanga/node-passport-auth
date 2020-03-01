@@ -2,7 +2,7 @@
 
 Node.js authentication application using passport.js local strategy and mongoDB Atlas
 
-## Images
+![Auth](images/auth.gif)
 
 ## Usage
 
