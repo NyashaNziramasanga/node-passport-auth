@@ -2,15 +2,18 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const { forwardAuthenticated } = require('../config/auth');
 
 // User model
 const User = require('../models/User');
 
 // Login page
-router.get('/login', (req, res) => res.render('login'));
+router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
 
 // Register page
-router.get('/register', (req, res) => res.render('register'));
+router.get('/register', forwardAuthenticated, (req, res) =>
+	res.render('register')
+);
 
 // Handle Register
 router.post('/register', (req, res) => {
@@ -20,7 +23,7 @@ router.post('/register', (req, res) => {
 	// Check required fields
 	if (!name || !email || !password || !password2) {
 		errors.push({
-			msg: 'Please Fill in all fields'
+			msg: 'Please fill in all fields'
 		});
 	}
 
@@ -79,7 +82,7 @@ router.post('/register', (req, res) => {
 							.then(user => {
 								req.flash(
 									'success_msg',
-									'You ar now registered and can log in'
+									'You are now registered and can log in'
 								);
 								res.redirect('/users/login');
 							})
