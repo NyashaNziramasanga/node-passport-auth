@@ -13,7 +13,7 @@ $ npm run dev
 
 ## References
 
-- [Node.js with passport authentication](https://www.youtube.com/watch?v=6FOq4cUdH8k)
 - [Passport.js](http://www.passportjs.org/docs/authenticate/)
 - [Embedded JavaScript templating (EJS)](https://ejs.co/)
 - [connect-flash npm](https://github.com/jaredhanson/connect-flash)
+- [Node.js with passport authentication](https://www.youtube.com/watch?v=6FOq4cUdH8k)
